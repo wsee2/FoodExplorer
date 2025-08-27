@@ -838,51 +838,88 @@ const MSF_NearMe = (() => {
   return { init };
 })();
 
-// Dummy data for example
-const foods = [
-  { name: "Nasi Lemak", state: "Kuala Lumpur", race: "Malay" },
-  { name: "Satay", state: "Penang", race: "Malay" },
-  { name: "Laksa", state: "Penang", race: "Chinese" },
-  { name: "Cendol", state: "Melaka", race: "Malay" },
-  // Add more food items as needed
-];
-
 // Function to handle the search
 function searchFood() {
-  const searchTerm = document.getElementById("foodSearch").value.toLowerCase();
+  const query = document.getElementById("foodSearch").value.trim().toLowerCase();
   
-  // Filter food items based on the search term
-  const filteredFoods = foods.filter(food => 
-    food.name.toLowerCase().includes(searchTerm) || 
-    food.state.toLowerCase().includes(searchTerm) ||
-    food.race.toLowerCase().includes(searchTerm)
-  );
+  // Check if the search query is empty
+  if (!query) {
+    alert("Please enter a food name, state, or race.");
+    return;
+  }
 
-  // Log the result or display it on the page
-  console.log(filteredFoods);
+  // Map of search results to redirect
+  const searchResults = {
+  // Malay Food
+  "nasi lemak": "malay.html",
+  "satay": "malay.html",
+  "roti canai": "malay.html",
+  "nasi kerabu": "malay.html",
+  "nasi tumpang": "terengganu.html",
+  "mee goreng": "malay.html",
+  "laksam": "kelantan.html",
+  "kuih lapis": "sarawak.html",
+  "mee rebus": "johor.html",
+  "roti john": "kuala lumpur.html",
 
-  // You can also display the results dynamically on the page. For example:
-  displaySearchResults(filteredFoods);
-}
+  // Chinese Food
+  "char kway teow": "chinese.html",
+  "hokkien mee": "penang.html",
+  "chee cheong fun": "penang.html",
+  "dim sum": "perak.html",
+  "lok lok": "penang.html",
+  "lor mee": "penang.html",
+  "wantan mee": "kuala lumpur.html",
+  "popiah": "penang.html",
+  "chicken rice": "perak.html",
+  "asam laksa": "penang.html",
 
-// Function to display the search results
-function displaySearchResults(foods) {
-  const resultContainer = document.getElementById("searchResults");
-  resultContainer.innerHTML = ""; // Clear previous results
+  // Indian Food
+  "vada": "indian.html",
+  "murtabak": "johor.html",
+  "teh tarik": "penang.html",
+  "banana leaf rice": "selangor.html",
+  "pani puri": "kuala lumpur.html",
+  "chapati": "kuala lumpur.html",
+  "samosa": "penang.html",
+  "idli": "kuala lumpur.html",
+  "kothu roti": "kuala lumpur.html",
+  "dosa": "kuala lumpur.html",
 
-  if (foods.length > 0) {
-    foods.forEach(food => {
-      const foodElement = document.createElement("div");
-      foodElement.classList.add("food-item");
-      foodElement.innerHTML = `
-        <h5>${food.name}</h5>
-        <p>State: ${food.state}</p>
-        <p>Race: ${food.race}</p>
-      `;
-      resultContainer.appendChild(foodElement);
-    });
+  // Other Food
+  "tuhau": "sabah.html",
+  "ambuyat": "sabah.html",
+  "hinava": "sabah.html",
+  "kacang pool": "johor.html",
+  "cincaluk": "melaka.html",
+  "pinasakan": "sabah.html",
+  "tinumis": "sabah.html",
+  "nasi kuning": "sabah.html",
+  "tapioca cake": "northern states.html",
+  "sago gula melaka": "melaka.html",
+
+  // States
+  "penang": "penang.html",
+  "perak": "perak.html",
+  "melaka": "malacca.html",
+  "selangor": "selangor.html",
+  "kelantan": "kelantan.html",
+  "sarawak": "sarawak.html",
+  "sabah": "sabah.html",
+  "negeri sembilan": "negerisembilan.html",
+
+  // Races
+  "malay": "malay.html",
+  "chinese": "chinese.html",
+  "indian": "indian.html",
+  "other": "other.html"
+};
+
+  // Redirect to the page based on search query
+  if (searchResults[query]) {
+    window.location.href = searchResults[query];
   } else {
-    resultContainer.innerHTML = "<p>No results found</p>";
+    alert("No results found for your search.");
   }
 }
 
@@ -1027,3 +1064,4 @@ document.addEventListener('DOMContentLoaded', function () {
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll values
   });
 });
+
