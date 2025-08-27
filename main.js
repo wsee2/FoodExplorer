@@ -1027,3 +1027,21 @@ document.addEventListener('DOMContentLoaded', function () {
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll values
   });
 });
+
+// Add this to your main.js file
+function adjustRankingForMobile() {
+  if (window.innerWidth <= 768) {
+    // Adjust card layout for mobile
+    document.querySelectorAll('.ranking-card').forEach(card => {
+      const title = card.querySelector('.food-title');
+      if (title) {
+        title.style.minHeight = 'auto';
+      }
+    });
+  }
+}
+
+// Run on load and resize
+window.addEventListener('DOMContentLoaded', adjustRankingForMobile);
+window.addEventListener('resize', adjustRankingForMobile);
+
