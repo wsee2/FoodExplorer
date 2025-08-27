@@ -253,16 +253,109 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-  .features-header h2 {
-    font-size: 2rem;
+  .ranking-section {
+    padding: 3rem 0;
   }
+  
+  .ranking-header {
+    margin-bottom: 2.5rem;
+  }
+  
+  .ranking-header h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .ranking-header p {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+  
+  .ranking-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-content {
+    padding: 1.25rem;
+  }
+  
+  .food-title {
+    font-size: 1.3rem;
+    line-height: 1.3;
+  }
+  
+  .food-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .rating {
+    flex-wrap: wrap;
+  }
+  
+  .view-details-btn {
+    align-self: stretch;
+    text-align: center;
+    padding: 0.6rem 1rem;
+  }
+  
+  /* Ensure text doesn't overflow */
+  .food-tags {
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+  
+  .food-tag {
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+}
 
-  .features-header p {
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  .ranking-header h2 {
+    font-size: 1.75rem;
+  }
+  
+  .ranking-header h2::after {
+    width: 60px;
+    bottom: -8px;
+  }
+  
+  .rank-badge {
+    width: 35px;
+    height: 35px;
     font-size: 1rem;
   }
-
-  .feature-title {
-    font-size: 1.3rem;
+  
+  .rank-badge.top-1 {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+  
+  .food-title {
+    font-size: 1.2rem;
+    padding-right: 40px; /* Make space for rank badge */
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+  
+  .rating-value {
+    font-size: 0.9rem;
+  }
+  
+  .votes {
+    font-size: 0.8rem;
   }
 }
 
@@ -961,3 +1054,4 @@ body {
     margin-left: auto !important;
   }
 }
+
